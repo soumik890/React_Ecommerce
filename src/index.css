@@ -78,11 +78,19 @@ font-family: 'Poppins', sans-serif; */
   border-radius: 10px;
 }
 
-.contactus{
+.contactus {
   margin: 0;
   padding: 0;
   height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  flex-direction: column;
 }

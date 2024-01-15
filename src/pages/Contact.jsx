@@ -4,7 +4,12 @@ import { BiMailSend, BiPhoneCall, BiSupport } from "react-icons/bi";
 import Image from "../assets/course-3.png";
 const Contact = () => {
   return (
-    <Layout>
+    <Layout
+      title={"Contact-Ecom App"}
+      desription={"Contact Description"}
+      keywords={"Contact, New Contact, Best Contact"}
+      author={"Soumik Chakraborty"}
+    >
       <div className="row contactus">
         <div className="col-md-6">
           <img src={Image} style={{ width: "80%" }} />
