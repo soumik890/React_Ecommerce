@@ -2,18 +2,15 @@ import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/auth";
-const Login = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
+const ForgotPass = () => {
   const initialValue = {
     email: "",
-    password: "",
+    newPassword: "",
+    answer: "",
   };
 
   const [inputs, setInputs] = useState(initialValue);
-  const [auth, setAuth] = useAuth();
 
   const handler = (e, input) => {
     console.log(e.target.value);
@@ -23,17 +20,14 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await axios.post(
-      `${import.meta.env.VITE_APP_API}/api/v1/auth/login`,
+      `${import.meta.env.VITE_APP_API}/api/v1/auth/forgotpass`,
       { ...inputs }
     );
     if (res.data.success) {
       toast.success(res.data.message);
-      setAuth({
-        user: res?.data?.user,
-        token: res?.data?.token,
-      });
+
       localStorage.setItem("auth", JSON.stringify(res.data));
-      navigate(location.state || "/");
+      navigate("/login");
     } else {
       toast.error(res.data.message);
     }
@@ -46,14 +40,14 @@ const Login = () => {
 
   return (
     <Layout
-      title={"Login-Ecom App"}
-      desription={"Login Description"}
-      keywords={"Login, New Login, Best Login"}
+      title={"Forgot Password"}
+      desription={"Forgot Password Description"}
+      keywords={"Forgot Password, New Forgot Password, Best Forgot Password"}
       author={"Soumik Chakraborty"}
     >
       <div className="form-container">
         <form onSubmit={handleSubmit}>
-          <h4 className="title">Login Page</h4>
+          <h4 className="title">Forgot Password Page</h4>
           <div className="mb-3">
             <input
               type="email"
@@ -70,22 +64,24 @@ const Login = () => {
               type="password"
               className="form-control"
               id="exampleInputPassword1"
-              placeholder="Password"
-              value={inputs?.password}
-              onChange={(e) => handler(e, "password")}
+              placeholder="New Password"
+              value={inputs?.newPassword}
+              onChange={(e) => handler(e, "newPassword")}
               required
             />
           </div>
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={() => {
-              navigate("/forgotpass");
-            }}
-            style={{ margin: 10 }}
-          >
-            Forgot Password
-          </button>
+          <div className="mb-3">
+            <input
+              type="text"
+              className="form-control"
+              id="exampleInputPassword1"
+              placeholder="Security Question Answer"
+              value={inputs?.answer}
+              onChange={(e) => handler(e, "answer")}
+              required
+            />
+          </div>
+
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
@@ -95,4 +91,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPass;

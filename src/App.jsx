@@ -7,6 +7,7 @@ import PageNotFound from "./pages/PageNotFound";
 import Register from "./pages/Auth/Register";
 import Login from "./pages/Auth/Login";
 import Dashboard from "./pages/User/Dashboard";
+import ForgotPass from "./pages/Auth/ForgotPass";
 import { PrivateRoute } from "./Routes/PrivateRoute";
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="" element={<Dashboard />} />
         </Route>
         <Route path="/Register" element={<Register />} />
+        <Route path="/forgotpass" element={<ForgotPass />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />

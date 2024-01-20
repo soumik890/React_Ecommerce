@@ -6,8 +6,12 @@ import { useNavigate } from "react-router-dom";
 const Register = () => {
   const navigate = useNavigate();
   const initialValue = {
+    name: "",
     email: "",
     password: "",
+    address: "",
+    phone: "",
+    answer: "",
   };
 
   const [inputs, setInputs] = useState(initialValue);
@@ -47,6 +51,7 @@ const Register = () => {
       <div className="form-container">
         <form onSubmit={handleSubmit}>
           <h4 className="title">Register Page</h4>
+
           <div className="mb-3">
             <input
               type="text"
@@ -91,6 +96,7 @@ const Register = () => {
               required
             />
           </div>
+
           <div className="mb-3">
             <input
               type="password"
@@ -99,6 +105,17 @@ const Register = () => {
               placeholder="Password"
               value={inputs?.password}
               onChange={(e) => handler(e, "password")}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <input
+              type="password"
+              className="form-control"
+              id="exampleInputPassword1"
+              placeholder="What is your favourite sports?"
+              value={inputs?.answer}
+              onChange={(e) => handler(e, "answer")}
               required
             />
           </div>

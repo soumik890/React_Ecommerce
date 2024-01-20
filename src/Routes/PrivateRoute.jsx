@@ -7,17 +7,14 @@ import Spinner from "../components/Spinner";
 export const PrivateRoute = () => {
   const [ok, setOk] = useState(false);
   const [auth, setAuth] = useAuth();
-
+  console.log("called private route");
   useEffect(() => {
     const authCheck = async () => {
       const res = await axios.get(
         `${import.meta.env.VITE_APP_API}/api/v1/auth/user-auth`
-        // {
-        //   headers: {
-        //     Authorization: auth?.token,
-        //   },
-        // }
       );
+
+      console.log(res.data, "<><><><><><><>");
 
       if (res.data.ok) {
         setOk(true);
@@ -27,7 +24,7 @@ export const PrivateRoute = () => {
     };
 
     if (auth?.token) authCheck();
-  }, []);
+  }, [auth?.token]);
 
   return ok ? <Outlet /> : <Spinner />;
 };
