@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-const Spinner = () => {
-  const [count, setCount] = useState(5);
+const Spinner = ({ path = "login" }) => {
+  const [count, setCount] = useState(3);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -9,19 +9,17 @@ const Spinner = () => {
     const interval = setInterval(() => {
       setCount((prev) => --prev);
     }, 1000);
-    count === 0 && navigate("/login", { state: location.pathname });
+    count === 0 && navigate(`/${path}`, { state: location.pathname });
 
     return () => clearInterval(interval);
-  }, [count, navigate]);
+  }, [count, navigate, location, path]);
   return (
     <div
       className="d-flex flex-column justify-content-center align-items-center"
       style={{ height: "70vh" }}
     >
       <h1 className="Text-center">Redirecting you in {count} seconds...</h1>
-      <div className="spinner-border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </div>
+      <div className="spinner-border" role="status"></div>
     </div>
   );
 };

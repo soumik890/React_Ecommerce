@@ -9,13 +9,24 @@ import Login from "./pages/Auth/Login";
 import Dashboard from "./pages/User/Dashboard";
 import ForgotPass from "./pages/Auth/ForgotPass";
 import { PrivateRoute } from "./Routes/PrivateRoute";
+import { AdminRoute } from "./Routes/AdminRoute";
+import AdminDash from "./pages/Admin/AdminDash";
+import CreateCat from "./pages/Admin/CreateCat";
+import CreateProduct from "./pages/Admin/CreateProduct";
+import Users from "./pages/Admin/Users";
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/Dashboard" element={<PrivateRoute />}>
-          <Route path="" element={<Dashboard />} />
+          <Route path="user" element={<Dashboard />} />
+        </Route>
+        <Route path="/Dashboard" element={<AdminRoute />}>
+          <Route path="admin" element={<AdminDash />} />
+          <Route path="admin/create-category" element={<CreateCat />} />
+          <Route path="admin/create-product" element={<CreateProduct />} />
+          <Route path="admin/users" element={<Users />} />
         </Route>
         <Route path="/Register" element={<Register />} />
         <Route path="/forgotpass" element={<ForgotPass />} />

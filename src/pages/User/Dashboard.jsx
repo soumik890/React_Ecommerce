@@ -8,7 +8,7 @@ const Dashboard = () => {
       keywords={"Dashboard, New Dashboard, Best Dashboard"}
       author={"Soumik Chakraborty"}
     >
-      <h1>Dashboard</h1>
+      <h1>User Dashboard</h1>
     </Layout>
   );
 };
