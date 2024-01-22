@@ -14,6 +14,8 @@ import AdminDash from "./pages/Admin/AdminDash";
 import CreateCat from "./pages/Admin/CreateCat";
 import CreateProduct from "./pages/Admin/CreateProduct";
 import Users from "./pages/Admin/Users";
+import Orders from "./pages/User/Orders";
+import Profile from "./pages/User/Profile";
 function App() {
   return (
     <>
@@ -21,6 +23,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/Dashboard" element={<PrivateRoute />}>
           <Route path="user" element={<Dashboard />} />
+          <Route path="user/orders" element={<Orders />} />
+          <Route path="user/profile" element={<Profile />} />
         </Route>
         <Route path="/Dashboard" element={<AdminRoute />}>
           <Route path="admin" element={<AdminDash />} />
